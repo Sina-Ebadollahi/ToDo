@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import logo from './logo.svg';
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -11,6 +12,13 @@ function App() {
       </header>
     </div>
   );
+=======
+import logo from "./logo.svg";
+import "./App.css";
+
+function App() {
+  return <div className="App"></div>;
+>>>>>>> master
 }
 
 export default App;
