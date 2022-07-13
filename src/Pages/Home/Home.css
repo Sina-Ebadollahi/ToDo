@@ -1,0 +1,15 @@
+.HomeContainer {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.MountainContainer {
+  min-height: 40vh;
+  min-width: 100vw;
+  background: url("https://wallpapercave.com/wp/wp4853028.jpg"),
+    rgb(187, 31, 187);
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  background-attachment: fixed;
+}
