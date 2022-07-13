@@ -22,4 +22,27 @@
   min-width: 100vw;
   min-height: 60vh;
   max-height: 60vh;
+  display: flex;
+  justify-content: center;
+}
+.BlankDivContainer .input_frame{
+  top: -150px;
+  height: 50px;
+  position: relative;
+}
+.BlankDivContainer .body_frame{
+  height: 400px;
+  width: 300px;
+  position: relative;
+  top: -130px;
+}
+@media screen and (min-width: 400px) {
+  .BlankDivContainer .body_frame{
+    width: 400px ;
+  }
+}
+@media screen and (min-width: 700px) {
+  .BlankDivContainer .body_frame{
+    width: 600px ;
+  }
 }
