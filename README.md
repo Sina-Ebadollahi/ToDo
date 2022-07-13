@@ -1,1 +1,1 @@
-# todo fronend app for fun :)
+# todo frontEnd app for fun :)
