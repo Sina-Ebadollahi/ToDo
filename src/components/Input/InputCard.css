@@ -7,21 +7,30 @@
   justify-content: center;
   align-items: center;
 }
-.input_wrapper {
-  /* border-radius: 50%; */
+.radio_input_wrapper {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.43);
 }
 .radio_input_container {
   justify-self: flex-start;
   display: flex;
   justify-content: center;
   align-items: center;
+
+}
+.radio_input_wrapper.checked{
+  background:aqua;
 }
 .radio-input {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
+  width: 37px;
+  height: 37px;
   vertical-align: middle;
-  border: 1px solid black;
+  accent-color: aqua;
+
   appearance: none;
   -webkit-appearance: none;
   outline: none;
@@ -29,7 +38,6 @@
 }
 .radio-input:checked {
   appearance: auto;
-  clip-path: circle(50% at 50% 50%);
 }
 .text-input-container {
   width: 70%;
@@ -48,4 +56,9 @@
 .task-text-input:active {
   border: none;
   outline: none;
+}
+
+.InputCard .radio_input_wrapper{
+  position: relative;
+  top: 6px;
 }

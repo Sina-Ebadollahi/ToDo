@@ -30,6 +30,9 @@
   height: 50px;
   position: relative;
 }
+.BlankDivContainer .input_frame .task-text-input{
+  padding-left: 10px;
+}
 .BlankDivContainer .body_frame{
   height: 400px;
   width: 300px;
