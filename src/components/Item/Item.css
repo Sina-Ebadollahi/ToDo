@@ -4,6 +4,8 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: solid black 1px;
 }
 .task-title-container {
   width: 60%;
@@ -19,6 +21,7 @@
   width: 10%;
   height: 90%;
   display: flex;
+  justify-self: flex-end;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -38,8 +41,8 @@
   top: 50%;
   left: 50%;
   width: 5px;
-  height: 20px;
-  background-color: #f0f0f0;
+  height: 33px;
+  background-color: #a8a1a1;
   transform: rotate(45deg) translate(-50%, -50%);
   transform-origin: top left;
   content: "";
@@ -47,6 +50,7 @@
 .close:after {
   transform: rotate(-45deg) translate(-50%, -50%);
 }
+
 .task-done {
   color: rgb(122, 112, 112);
   text-decoration: line-through;

@@ -20,7 +20,7 @@ export default function Home() {
                   </Frame>
                 <Frame className={"body_frame"} shadow={1}>{
                   // map on array of datas with Item component for each one
-                   
+                  
                 }</Frame>
             </div>
 

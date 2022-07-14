@@ -20,7 +20,7 @@ export default function Item({ taskDetail, taskIsFinished, taskID, changeCurrent
         {currentHoveredTask === taskID && (
             // div onClick deletes task
             <div className="delete-task-btn" onClick={(e) => {
-                console.log(taskID);
+                // delete task 
             }}>
                 <div className="close"></div>
             </div>
