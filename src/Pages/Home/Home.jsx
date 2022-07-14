@@ -2,7 +2,6 @@ import './Home.css'
 import React from 'react'
 import Frame from "../../components/Frame/Frame";
 import InputCard from '../../components/Input/InputCard';
-
 export default function Home() {
   return (
     <div className="HomeContainer">
