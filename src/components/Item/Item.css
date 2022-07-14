@@ -1,8 +1,8 @@
 .item-container {
   width: 100%;
-  height: 100%;
+  height: 10%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 .task-title-container {
@@ -21,6 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .close {
   position: absolute;
@@ -45,4 +46,8 @@
 }
 .close:after {
   transform: rotate(-45deg) translate(-50%, -50%);
+}
+.task-done {
+  color: rgb(122, 112, 112);
+  text-decoration: line-through;
 }
