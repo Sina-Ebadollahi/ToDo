@@ -22,10 +22,14 @@
   align-items: center;
 
 }
+.radio_input_wrapper.checked{
+  background:aqua;
+}
 .radio-input {
   width: 37px;
   height: 37px;
   vertical-align: middle;
+  accent-color: aqua;
 
   appearance: none;
   -webkit-appearance: none;

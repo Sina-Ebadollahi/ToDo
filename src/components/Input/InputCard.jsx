@@ -4,15 +4,15 @@ import React, { useState } from 'react'
 // Rounded Radio
 export const RoundedRadioInput = ({ setIsChecked, isChecked }) => {
   return(
-      <div className="radio_input_wrapper">
-      <input type="checkbox" name="" id="" className='radio-input' onClick={() => setIsChecked(!isChecked)} />
+      <div className={("radio_input_wrapper ")+(isChecked?"checked":"")} >
+      <input type="checkbox" name="" id=""  className='radio-input' onClick={() => setIsChecked(!isChecked)} />
       </div>
   )
 }
 export const CustomInput = ({ setTaskTitle }) => {
   return (
     <>
-      <input type="text" name="" id="" maxLength={20} className='task-text-input' onChange={(e) => setTaskTitle(e.target.value)} />
+      <input type="text" name="" placeholder="input your text ... " id="" maxLength={20} className='task-text-input' onChange={(e) => setTaskTitle(e.target.value)} />
     </>
   )
 }
