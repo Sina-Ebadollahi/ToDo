@@ -12,13 +12,19 @@ export const RoundedRadioInput = ({ setIsChecked, isChecked }) => {
 export const CustomInput = ({ setTaskTitle }) => {
   return (
     <>
-      <input type="text" name="" id="" className='task-text-input' onChange={(e) => setTaskTitle(e.target.value)} />
+      <input type="text" name="" id="" maxLength={20} className='task-text-input' onChange={(e) => setTaskTitle(e.target.value)} />
     </>
   )
 }
 export default function InputCard() {
   const [taskTitle, setTaskTitle] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+
+
+  const submitRequest = () => {
+    // implementation
+  }
+  
   return (
     <div className="InputCard">
       <div className="radio-input-container">
@@ -26,9 +32,14 @@ export default function InputCard() {
           <RoundedRadioInput setIsChecked={setIsChecked} isChecked={isChecked} />
         </div>
       </div>
-      <div className="text-input-container">
+      <div className="text-input-container" onKeyDown={(e) => {
+        if(e.key == "Enter"){
+          submitRequest()
+        }
+      }}>
         <CustomInput setTaskTitle={setTaskTitle} />
       </div>
+
     </div>
   )
 }
