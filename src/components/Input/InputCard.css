@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: center;
 }
-.input_wrapper {
+.radio_input_wrapper {
   display: inline-block;
   width: 35px;
   height: 35px;
@@ -52,4 +52,9 @@
 .task-text-input:active {
   border: none;
   outline: none;
+}
+
+.InputCard .radio_input_wrapper{
+  position: relative;
+  top: 6px;
 }

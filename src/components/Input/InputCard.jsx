@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 // Rounded Radio
 export const RoundedRadioInput = ({ setIsChecked, isChecked }) => {
   return(
-      <div className="input_wrapper">
+      <div className="radio_input_wrapper">
       <input type="checkbox" name="" id="" className='radio-input' onClick={() => setIsChecked(!isChecked)} />
       </div>
   )
