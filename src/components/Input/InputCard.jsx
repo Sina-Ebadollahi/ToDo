@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 // Rounded Radio
 export const RoundedRadioInput = ({ setIsChecked, isChecked }) => {
   return(
-    <>
+      <div className="input_wrapper">
       <input type="checkbox" name="" id="" className='radio-input' onClick={() => setIsChecked(!isChecked)} />
-    </>
+      </div>
   )
 }
 export const CustomInput = ({ setTaskTitle }) => {
@@ -28,9 +28,7 @@ export default function InputCard() {
   return (
     <div className="InputCard">
       <div className="radio-input-container">
-        <div className="input_wrapper">
           <RoundedRadioInput setIsChecked={setIsChecked} isChecked={isChecked} />
-        </div>
       </div>
       <div className="text-input-container" onKeyDown={(e) => {
         if(e.key == "Enter"){
