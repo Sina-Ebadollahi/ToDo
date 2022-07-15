@@ -1,0 +1,13 @@
+.signup-container {
+  min-width: 100vw;
+  min-height: 100vh;
+
+  background: rgb(180, 177, 58);
+  background: linear-gradient(
+    45deg,
+    rgba(180, 177, 58, 1) 0%,
+    rgba(230, 76, 117, 1) 29%,
+    rgba(226, 158, 117, 1) 57%,
+    rgba(233, 217, 189, 1) 100%
+  );
+}
