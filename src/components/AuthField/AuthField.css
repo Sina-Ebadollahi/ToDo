@@ -1,0 +1,16 @@
+.auth-input-field {
+  border-radius: 40px;
+  background-color: rgb(201, 202, 199);
+  color: rgb(115, 117, 119);
+}
+.auth-input-field input {
+  color: inherit;
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.auth-input-field-focus {
+  border: none;
+  box-shadow: 2px 3px 4px black;
+  background-color: white;
+  color: black;
+}
