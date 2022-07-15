@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import AuthField from '../../components/AuthField/AuthField'
 import './Signup.css'
 export const GetInfoAuthPage = ({}) => {
     return(
@@ -29,7 +30,10 @@ export default function Signup() {
                 <h4 className="login-header">Already have an account ? <Link to="/Login"> Sign in</Link></h4>
             </div>
             <div className="user-info-wrapper fc">
-
+                <div className="first-last-container fc">
+                    <AuthField w={50}>First name</AuthField>
+                    <AuthField w={50}>Last name</AuthField>
+                </div>
             </div>
             <button className="auth-btn fc">Sign up</button>
             <TermsOfService reverseValueOfIsTermAccepted={reverseValueOfIsTermAccepted} />
