@@ -10,4 +10,13 @@
     rgba(226, 158, 117, 1) 57%,
     rgba(233, 217, 189, 1) 100%
   );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
