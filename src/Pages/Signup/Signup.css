@@ -20,3 +20,27 @@
   justify-content: center;
   align-items: center;
 }
+.form {
+  background-color: rgb(236, 228, 228);
+  min-width: 40vw;
+  min-height: 70vh;
+  border-radius: 40px;
+}
+.auth-header-wrapper {
+  flex-direction: column;
+}
+.auth-header {
+  font-size: calc(1.5rem + 2vw);
+  color: rgb(22, 22, 22);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+@media screen and (max-width: 700px) {
+  .form {
+    min-width: 500px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .form {
+    min-width: 450px;
+  }
+}
