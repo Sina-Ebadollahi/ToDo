@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import AuthField from '../../components/AuthField/AuthField'
+import InfoCard from '../../components/InfoCard/InfoCard'
 import { RoundedRadioInput } from '../../components/Input/InputCard'
 import './Signup.css'
 export const GetInfoAuthPage = ({}) => {
@@ -71,9 +72,13 @@ export default function Signup() {
             <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Sign up</button>
             <TermsOfService isChecked={isTermAccepted} changeTermViewable={changeTermViewable} reverseValueOfIsTermAccepted={reverseValueOfIsTermAccepted} />
         </form>
-        {/* {isTermsViewable && (
-            <TermsOfServiceInfo changeTermViewable={changeTermViewable} />
-        )} */}
+        {isTermsViewable && (
+            <InfoCard changeShowState={changeTermViewable}>
+                <p className="terms-paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, nisi tempora ratione quae quis quibusdam! Consequatur, repellendus, cupiditate nemo quo velit optio repudiandae nisi nobis esse at placeat, animi necessitatibus harum nihil error maiores laborum quam. Ab earum minima aspernatur.
+                </p>
+            </InfoCard>
+        )}
 
     </section>
   )

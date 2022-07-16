@@ -22,4 +22,6 @@
 }
 .forgot-password-wrapper > * {
   margin-left: 70px;
+  color: blue;
+  cursor: pointer;
 }
