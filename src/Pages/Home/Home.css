@@ -1,0 +1,51 @@
+.HomeContainer {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+.MountainContainer {
+  min-height: 40vh;
+  min-width: 100vw;
+  max-height: 40vh;
+  background: url("https://wallpapercave.com/wp/wp4853028.jpg"),
+    rgb(187, 31, 187);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.MountainContainerCover {
+  width: 100vw;
+  height: 40vh;
+  background-color: fuchsia;
+  opacity: 0.4;
+}
+.BlankDivContainer {
+  min-width: 100vw;
+  min-height: 60vh;
+  max-height: 60vh;
+  display: flex;
+  justify-content: center;
+}
+.BlankDivContainer .input_frame{
+  top: -150px;
+  height: 50px;
+  position: relative;
+}
+.BlankDivContainer .input_frame .task-text-input{
+  padding-left: 10px;
+}
+.BlankDivContainer .body_frame{
+  height: 400px;
+  width: 300px;
+  position: relative;
+  top: -130px;
+}
+@media screen and (min-width: 400px) {
+  .BlankDivContainer .body_frame{
+    width: 400px ;
+  }
+}
+@media screen and (min-width: 700px) {
+  .BlankDivContainer .body_frame{
+    width: 600px ;
+  }
+}
