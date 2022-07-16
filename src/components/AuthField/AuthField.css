@@ -1,16 +1,23 @@
 .auth-input-field {
-  border-radius: 40px;
-  height: 20px;
+  border-radius: 20px;
+  height: 4rem;
   background-color: rgb(201, 202, 199);
   color: rgb(115, 117, 119);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
 }
 .auth-input-field input {
+  border: none;
+  outline: none;
   color: inherit;
-  font-size: 2rem;
+  background-color: transparent;
+  width: 90%;
+  font-size: calc(1rem + 1vw);
   font-family: Arial, Helvetica, sans-serif;
 }
 .auth-input-field-focus {
-  border: none;
   box-shadow: 2px 3px 4px black;
   background-color: white;
   color: black;

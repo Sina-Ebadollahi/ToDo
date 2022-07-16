@@ -34,16 +34,45 @@
   color: rgb(22, 22, 22);
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+.login-header {
+  font-size: 1.3rem;
+}
+.user-info-wrapper {
+  flex-direction: column;
+  min-height: 15rem;
+  min-width: 90%;
+}
+.eachWrapper {
+  margin: 5px auto;
+}
+.user-email-wrapper,
+.user-password-wrapper {
+  /* margin: auto 1rem; */
+  min-width: 90%;
+}
 .first-last-container {
-  height: 30px;
+  height: 3rem;
+}
+.auth-btn {
+  all: unset;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 1.5rem 1rem;
+  width: 80%;
+  background-color: rgb(95, 95, 219);
+  text-align: center;
+  color: white;
+  font-size: 2rem;
 }
 @media screen and (max-width: 700px) {
   .form {
     min-width: 500px;
+    max-width: 500px;
   }
 }
 @media screen and (max-width: 500px) {
   .form {
     min-width: 450px;
+    max-width: 450px;
   }
 }
