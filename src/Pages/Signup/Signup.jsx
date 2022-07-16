@@ -31,6 +31,14 @@ const TermsOfServiceInfo = ({ changeTermViewable }) => {
         </div>
     )
 }
+export const AuthHeader = ({header, info, infoNav }) => {
+    return(
+        <div className="auth-header-wrapper fc eachWrapper">
+                <h1 className="auth-header">{header}</h1>
+                <h4 className="login-header">{info}<Link to={`/${infoNav}`}> {infoNav}</Link></h4>
+            </div>
+    )
+}
 export default function Signup() {
     const formRef = useRef(null);
     const [isTermAccepted, setIsTermAccepted] = useState(false);
@@ -47,10 +55,7 @@ export default function Signup() {
   return (
     <section className="signup-container">
         <form ref={formRef} className="form" onSubmit={(e) => {handleSignUpFormSubmit(e)}}>
-            <div className="auth-header-wrapper fc eachWrapper">
-                <h1 className="auth-header">Create account</h1>
-                <h4 className="login-header">Already have an account ? <Link to="/Login"> Sign in</Link></h4>
-            </div>
+            <AuthHeader header={"Create account"} info={"Already have an account ? "} infoNav={"Login"} />
             <div className="user-info-wrapper fc">
                 <div className="first-last-container fc eachWrapper">
                     <AuthField w={40}>First name</AuthField>
