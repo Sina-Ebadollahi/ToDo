@@ -23,7 +23,7 @@ const TermsOfServiceInfo = ({ changeTermViewable }) => {
     return(
         <div className="term-container fc">
             <div className="close-container">
-                <button className="close-term" onClick={() => changeTermViewable()}>close</button>
+                <button className="close-term" onClick={(e) => changeTermViewable()}>close</button>
             </div>
             <div className="terms-info">
                 <p>Lorem ipsum dolor sit amet, consectetur <br />  adipisicing elit. Modi quibusdam nihil <br /> quae fugiat quidem ipsam consequatur molestiae<br /> eum cumque perspiciatis molestias nostrum <br />repudiandae reiciendis distinctio totam <br />recusandae, adipisci mollitia? Rem totam <br />placeat quos eveniet at nemo <br />corrupti sequi eum error!</p>
@@ -39,7 +39,7 @@ export default function Signup() {
         setIsTermAccepted(!isTermAccepted);
     }
     const changeTermViewable = () => {
-        setIsTermAccepted(!isTermAccepted);
+        setIsTermsViewable(!isTermAccepted);
     }
     const handleSignUpFormSubmit= (e) => {
         e.preventDefault();
