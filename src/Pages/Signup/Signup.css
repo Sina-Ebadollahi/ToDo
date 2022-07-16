@@ -1,7 +1,7 @@
 .signup-container {
   min-width: 100vw;
   min-height: 100vh;
-
+  position: relative;
   background: rgb(180, 177, 58);
   background: linear-gradient(
     45deg,
@@ -63,6 +63,49 @@
   text-align: center;
   color: white;
   font-size: 2rem;
+}
+/* term-container */
+.term-container {
+  position: absolute;
+  left: 40%;
+  top: 40%;
+  min-width: 40vw;
+  min-height: 40vh;
+  background-color: white;
+  flex-direction: column;
+}
+.close-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.close-term {
+  all: unset;
+  width: 30%;
+  height: 100%;
+  background-color: blue;
+  color: white;
+}
+
+.term-link-wrapper {
+  justify-content: flex-start;
+  margin-left: 3rem;
+  width: 90%;
+  height: 10%;
+  padding: 1rem 0;
+}
+.term-link-wrapper > p {
+  font-size: 1.5rem;
+}
+.term-link-wrapper > input {
+  padding: 2rem;
+}
+.term-link-wrapper p span {
+  cursor: pointer;
+  font-size: inherit;
+  color: blue;
 }
 @media screen and (max-width: 700px) {
   .form {

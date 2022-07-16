@@ -2,11 +2,11 @@ import './InputCard.css'
 import React, {  useState } from 'react'
 
 // Rounded Radio
-export const RoundedRadioInput = ({ setIsChecked, isChecked }) => {
+export const RoundedRadioInput = ({ changeCheckEvent, isChecked }) => {
   
   return (
     <div className={("radio_input_wrapper ")+(isChecked?"checked":"")} >
-      <input   type="checkbox" name="" id=""  className='radio-input' onClick={() => setIsChecked(!isChecked)} />
+      <input   type="checkbox" name="" id=""  className='radio-input' onClick={() => changeCheckEvent()} />
       </div>
   ) 
   
@@ -21,7 +21,9 @@ export const CustomInput = ({ setTaskTitle }) => {
 export default function InputCard() {
   const [taskTitle, setTaskTitle] = useState("");
   const [isChecked, setIsChecked] = useState(false);
-
+  const changeIsChecked = () => {
+    setIsChecked(!isChecked);
+  }
 
   const submitRequest = () => {
     // implementation
@@ -30,7 +32,7 @@ export default function InputCard() {
   return (
     <div className="InputCard">
       <div className="radio-input-container">
-          <RoundedRadioInput setIsChecked={setIsChecked} isChecked={isChecked} />
+          <RoundedRadioInput isChecked={isChecked} changeCheckEvent={changeIsChecked} />
       </div>
       <div className="text-input-container" onKeyDown={(e) => {
         if(e.key == "Enter"){
