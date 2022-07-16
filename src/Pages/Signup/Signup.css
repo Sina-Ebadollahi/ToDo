@@ -1,0 +1,132 @@
+.signup-container {
+  min-width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  background: rgb(180, 177, 58);
+  background: linear-gradient(
+    45deg,
+    rgba(180, 177, 58, 1) 0%,
+    rgba(230, 76, 117, 1) 29%,
+    rgba(226, 158, 117, 1) 57%,
+    rgba(233, 217, 189, 1) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  background-color: rgb(236, 228, 228);
+  min-width: 40vw;
+  min-height: 70vh;
+  border-radius: 40px;
+}
+.auth-header-wrapper {
+  flex-direction: column;
+}
+.auth-header-wrapper > * {
+  margin: 0.8rem 0;
+}
+.auth-header {
+  font-size: calc(1.5rem + 2vw);
+  color: rgb(22, 22, 22);
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.login-header {
+  font-size: 1.3rem;
+}
+.user-info-wrapper {
+  flex-direction: column;
+  min-height: 15rem;
+  min-width: 90%;
+}
+.eachWrapper {
+  margin: 5px auto;
+}
+.user-email-wrapper,
+.user-password-wrapper {
+  /* margin: auto 1rem; */
+  min-width: 90%;
+}
+.first-last-container {
+  height: 3rem;
+}
+.auth-btn {
+  all: unset;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 1.5rem 1rem;
+  width: 80%;
+  background-color: rgb(95, 95, 219);
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+}
+/* term-container */
+.term-container {
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 40vw;
+  min-height: 40vh;
+  background-color: white;
+  flex-direction: column;
+}
+.close-container {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.close-container > button {
+  width: 100%;
+  padding: 1rem 0;
+}
+.close-term {
+  all: unset;
+  width: 30%;
+  height: 100%;
+  background-color: blue;
+  color: white;
+}
+
+.term-link-wrapper {
+  justify-content: flex-start;
+  margin-left: 3rem;
+  width: 90%;
+  height: 10%;
+  padding: 1rem 0;
+}
+.term-link-wrapper > p {
+  font-size: calc(0.7rem + 1vw);
+  margin-left: 1rem;
+}
+.term-link-wrapper > input {
+  padding: 2rem;
+}
+.term-link-wrapper p span {
+  cursor: pointer;
+  font-size: inherit;
+  color: blue;
+}
+@media screen and (max-width: 700px) {
+  .form {
+    min-width: 500px;
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .form {
+    min-width: 450px;
+    max-width: 450px;
+  }
+}

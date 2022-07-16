@@ -13,7 +13,7 @@ export default function Item({ taskDetail, taskIsFinished, taskID, changeCurrent
     
   return (
     <div key={taskID} className="item-container" onMouseEnter={() => changeCurrentHoveredTask(taskID)} onMouseLeave={() => changeCurrentHoveredTask(0)}>
-        <RoundedRadioInput setIsChecked={changeCheckEvent} isChecked={taskIsFinished} />
+        <RoundedRadioInput changeCheckEvent={changeCheckEvent} isChecked={taskIsFinished} />
         <div className="task-title-container">
             <h1 className={`title-header ${taskIsFinished ? ("task-done") : ("")}`} title={taskDetail}>{taskDetail}</h1>
         </div>
