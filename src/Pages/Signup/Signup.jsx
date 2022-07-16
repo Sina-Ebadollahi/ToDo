@@ -66,9 +66,9 @@ export default function Signup() {
             <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Sign up</button>
             <TermsOfService isChecked={isTermAccepted} changeTermViewable={changeTermViewable} reverseValueOfIsTermAccepted={reverseValueOfIsTermAccepted} />
         </form>
-        {isTermsViewable && (
+        {/* {isTermsViewable && (
             <TermsOfServiceInfo changeTermViewable={changeTermViewable} />
-        )}
+        )} */}
 
     </section>
   )
