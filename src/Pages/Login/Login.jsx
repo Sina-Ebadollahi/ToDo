@@ -1,17 +1,25 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import AuthField from '../../components/AuthField/AuthField'
+import InfoCard from '../../components/InfoCard/InfoCard';
 import { AuthHeader } from '../Signup/Signup'
 import './Login.css'
 export default function Login() {
   const formRef = useRef(null);
-
+  const [isPasswordResetComponentLoaded, setIsPasswordResetComponentLoaded] = useState(false);
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
   }
+  
+  const changePasswordComponentVisibility = () => {
+    setIsPasswordResetComponentLoaded(!isPasswordResetComponentLoaded);
+  }
+  const handleResetPasswordClick = (e) => {
+
+  }
   return (
-    <section className="login-container fc">
+    <section className={"login-container fc" + (isPasswordResetComponentLoaded && "page-out-of-focus")}>
       <form onSubmit={handleLoginSubmit} ref={formRef} className="form fc">
         <AuthHeader header={"Login account"} info={"Don't have an account yet ? "} infoNav={"Signup"} />
         <div className="user-info-wrapper fc">
@@ -24,9 +32,15 @@ export default function Login() {
         </div>
         <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Log in</button>
         <div className="forgot-password-wrapper fc">
-          <h4><Link to="/">Forgot password ?</Link></h4>
+          <h4 onClick={() => changePasswordComponentVisibility()}>Forgot password ?</h4>
         </div>
       </form>
+      {isPasswordResetComponentLoaded && (
+        <InfoCard changeShowState={changePasswordComponentVisibility}>
+          <AuthField w={80}>E-mail</AuthField>
+          <button className="auth-btn fc" onClick={handleResetPasswordClick}>reset password</button>
+        </InfoCard>
+      )}
     </section>
   )
 }
