@@ -48,7 +48,7 @@ export default function Signup() {
         setIsTermAccepted(!isTermAccepted);
     }
     const changeTermViewable = () => {
-        setIsTermsViewable(!isTermAccepted);
+        setIsTermsViewable(!isTermsViewable);
     }
     const handleSignUpFormSubmit= (e) => {
         e.preventDefault();
