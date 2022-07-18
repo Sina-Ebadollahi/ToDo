@@ -7,7 +7,8 @@ import './Login.css'
 export default function Login() {
   const formRef = useRef(null);
   const [isPasswordResetComponentLoaded, setIsPasswordResetComponentLoaded] = useState(false);
-
+  const [emailValue, setEmailValue] = useState("");
+  const [passwordValue, setPasswordValue] = useState("");
   const handleLoginSubmit = (e) => {
     e.preventDefault();
   }
@@ -22,7 +23,7 @@ export default function Login() {
     setEmailValue(email);
   }
   const changePasswordValue = (password) => {
-    setEmailValue(password);
+    setPasswordValue(password);
   }
   return (
     <section className={"login-container fc" + (isPasswordResetComponentLoaded && "page-out-of-focus")}>

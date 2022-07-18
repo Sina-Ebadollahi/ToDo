@@ -8,8 +8,8 @@ export default function ForgotPassword() {
     const [emailValue, setEmailValue] = useState("");
 
 
-    const changeEmailValue = (value) => {
-        setEmailValue(value);
+    const changeEmailValue = (email) => {
+        setEmailValue(email);
     }
     const handleForgotPasswordFormSubmit = (e) => {
         e.preventDefault();
