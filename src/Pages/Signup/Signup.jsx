@@ -36,7 +36,7 @@ export const AuthHeader = ({header, info, infoNav }) => {
     return(
         <div className="auth-header-wrapper fc eachWrapper">
                 <h1 className="auth-header">{header}</h1>
-                <h4 className="login-header">{info}<Link to={`/${infoNav}`}> {infoNav}</Link></h4>
+                {info && infoNav && <h4 className="login-header">{info}<Link to={`/${infoNav}`}> {infoNav}</Link></h4>}
             </div>
     )
 }
