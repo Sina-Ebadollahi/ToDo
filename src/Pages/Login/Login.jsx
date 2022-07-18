@@ -32,15 +32,15 @@ export default function Login() {
         </div>
         <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Log in</button>
         <div className="forgot-password-wrapper fc">
-          <h4 onClick={() => changePasswordComponentVisibility()}>Forgot password ?</h4>
+          <Link to='/ForgotPassword'><h4 >Forgot password ?</h4></Link>
         </div>
       </form>
-      {isPasswordResetComponentLoaded && (
+      {/* {isPasswordResetComponentLoaded && (
         <InfoCard changeShowState={changePasswordComponentVisibility}>
           <AuthField w={80}>E-mail</AuthField>
           <button className="auth-btn fc" onClick={handleResetPasswordClick}>reset password</button>
         </InfoCard>
-      )}
+      )} */}
     </section>
   )
 }

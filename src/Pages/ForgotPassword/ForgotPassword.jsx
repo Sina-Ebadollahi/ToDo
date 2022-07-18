@@ -5,6 +5,7 @@ import './ForgotPassword.css'
 export default function ForgotPassword() {
     const formRef = useRef(null);
     const [isEmailResetConfirmedByServer, setIsEmailResetConfirmedByServer] = useState(false);
+    const [emailValue, setEmailValue] = useState("");
 
 
 

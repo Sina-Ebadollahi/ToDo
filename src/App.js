@@ -5,6 +5,7 @@ import Home from "./Pages/Home/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 function App() {
   return (
     <React.Fragment>
@@ -14,6 +15,7 @@ function App() {
           <Route path={"/Home"} element={<Home />} />
           <Route path={"/Signup"} element={<Signup />} />
           <Route path={"/Login"} element={<Login />} />
+          <Route path={"/ForgotPassword"} element={<ForgotPassword />} />
           {/* 404 not found page */}
           {/* <Route path='*' element={}/> */}
         </Routes>
