@@ -18,16 +18,22 @@ export default function Login() {
   const handleResetPasswordClick = (e) => {
 
   }
+  const changeEmailValue = (email) => {
+    setEmailValue(email);
+  }
+  const changePasswordValue = (password) => {
+    setEmailValue(password);
+  }
   return (
     <section className={"login-container fc" + (isPasswordResetComponentLoaded && "page-out-of-focus")}>
       <form onSubmit={handleLoginSubmit} ref={formRef} className="form fc">
         <AuthHeader header={"Login account"} info={"Don't have an account yet ? "} infoNav={"Signup"} />
         <div className="user-info-wrapper fc">
                 <div className="user-email-wrapper fc eachWrapper">
-                    <AuthField type={"email"} w={90}>E-mail</AuthField>
+                    <AuthField changeValue={changeEmailValue} type={"email"} w={90}>E-mail</AuthField>
                 </div>
                 <div className="user-password-wrapper fc eachWrapper">
-                    <AuthField type={"password"} w={90}>Password</AuthField>
+                    <AuthField changeValue={changePasswordValue} type={"password"} w={90}>Password</AuthField>
                 </div>
         </div>
         <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Log in</button>

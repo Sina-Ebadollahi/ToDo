@@ -8,10 +8,12 @@ export default function ForgotPassword() {
     const [emailValue, setEmailValue] = useState("");
 
 
-
+    const changeEmailValue = (value) => {
+        setEmailValue(value);
+    }
     const handleForgotPasswordFormSubmit = (e) => {
         e.preventDefault();
-
+        setIsEmailResetConfirmedByServer(true);
     }
   return (
     <section className="signup-container">
@@ -20,7 +22,7 @@ export default function ForgotPassword() {
             {!isEmailResetConfirmedByServer && (
             <>
                 <div className="user-email-wrapper fc eachWrapper">
-                        <AuthField type={"email"} w={90}>E-mail</AuthField>
+                        <AuthField changeValue={changeEmailValue} type={"email"} w={90}>E-mail</AuthField>
                 </div>
                 <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Reset Password</button>
             </>

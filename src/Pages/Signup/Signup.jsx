@@ -44,6 +44,7 @@ export default function Signup() {
     const formRef = useRef(null);
     const [isTermAccepted, setIsTermAccepted] = useState(false);
     const [isTermsViewable, setIsTermsViewable] = useState(false);
+    const [userSignUpInfo, setUserSignUpInfo] = useState({fName: "", lName: "", email: "", })
     const reverseValueOfIsTermAccepted = () => {
         setIsTermAccepted(!isTermAccepted);
     }
