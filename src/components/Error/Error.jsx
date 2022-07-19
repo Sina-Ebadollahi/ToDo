@@ -3,8 +3,8 @@ import './Error.css'
 export default function Error({errorMessage, errorInfo}) {
   return (
     <div className="error-comp fc">
-        {errorMessage && <div className="error-header"></div>}
-        {errorInfo && <div className="error-info"></div>}
+        {errorMessage && errorMessage != "" && <div className="error-header">{errorMessage}</div>}
+        {errorInfo && errorInfo != ""  && <div className="error-info">{errorInfo}</div>}
     </div>
   )
 }
