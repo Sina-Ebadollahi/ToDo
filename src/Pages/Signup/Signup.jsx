@@ -93,14 +93,14 @@ export default function Signup() {
         setUserSignUpInfo({...userSignUpInfo, password});
     }
     // page unmounts
-    // useEffect(() => {
-    //     return () => {
-    //         setUserSignUpInfo({fName: "", lName: "", email: "", password: ""});
-    //         setError({errorMessage: "", errorInfo: ""});
-    //          setIsTermAccepted(false);
-    //          setIsTermsViewable(false);
-    //     }
-    // },[])
+    useEffect(() => {
+        return () => {
+            setUserSignUpInfo({fName: "", lName: "", email: "", password: ""});
+            setError({errorMessage: "", errorInfo: ""});
+             setIsTermAccepted(false);
+             setIsTermsViewable(false);
+        }
+    },[])
   return (
     <section className="signup-container">
         <form ref={formRef} className="form" onSubmit={(e) => handleSignUpFormSubmit(e)}>

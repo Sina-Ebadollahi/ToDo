@@ -24,14 +24,14 @@ export default function ForgotPassword() {
     }
   return (
     <section className="signup-container">
-        <form onSubmit={(e) => handleForgotPasswordFormSubmit(e)} ref={formRef} className="form">
+        <form onSubmit={(e) => handleForgotPasswordFormSubmit(e)} className="form">
             <AuthHeader header={"Password Reset"} />
             {!isEmailResetConfirmedByServer && (
             <>
                 <div className="user-email-wrapper fc eachWrapper">
                         <AuthField changeValue={changeEmailValue} type={"email"} w={90}>E-mail</AuthField>
                 </div>
-                <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Reset Password</button>
+                <button className="auth-btn fc" >Reset Password</button>
             </>
             )}
             {

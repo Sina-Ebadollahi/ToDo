@@ -27,10 +27,10 @@ export default function useFetch() {
           }
         }
         setIsPending(false);
-        setError(null);
+        setRequestError(null);
       } catch (err) {
         setIsPending(false);
-        setError(err.message);
+        setRequestError(err.message);
       }
     }
   };
