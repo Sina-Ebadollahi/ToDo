@@ -42,6 +42,7 @@ export const AuthHeader = ({header, info, infoNav }) => {
 }
 export default function Signup() {
     const formRef = useRef(null);
+    const [error, setError] = useState("");
     const [isTermAccepted, setIsTermAccepted] = useState(false);
     const [isTermsViewable, setIsTermsViewable] = useState(false);
     const [userSignUpInfo, setUserSignUpInfo] = useState({fName: "", lName: "", email: "", password: ""});
@@ -86,6 +87,7 @@ export default function Signup() {
             </div>
             <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Sign up</button>
             <TermsOfService isChecked={isTermAccepted} changeTermViewable={changeTermViewable} reverseValueOfIsTermAccepted={reverseValueOfIsTermAccepted} />
+            {}
         </form>
         {isTermsViewable && (
             <InfoCard changeShowState={changeTermViewable}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import 'Error.css'
+import './Error.css'
 export default function Error({errorMessage, errorInfo}) {
   return (
     <div className="error-comp fc">
