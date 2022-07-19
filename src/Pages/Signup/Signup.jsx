@@ -13,19 +13,6 @@ export const TermsOfService = ({reverseValueOfIsTermAccepted, changeTermViewable
         </div>
     )
 }
-const TermsOfServiceInfo = ({ changeTermViewable }) => {
-
-    return(
-        <div className="term-container fc">
-            <div className="close-container">
-                <button className="close-term" onClick={(e) => changeTermViewable()}>close</button>
-            </div>
-            <div className="terms-info">
-                <p>Lorem ipsum dolor sit amet, consectetur <br />  adipisicing elit. Modi quibusdam nihil <br /> quae fugiat quidem ipsam consequatur molestiae<br /> eum cumque perspiciatis molestias nostrum <br />repudiandae reiciendis distinctio totam <br />recusandae, adipisci mollitia? Rem totam <br />placeat quos eveniet at nemo <br />corrupti sequi eum error!</p>
-            </div>
-        </div>
-    )
-}
 export const AuthHeader = ({header, info, infoNav }) => {
     return(
         <div className="auth-header-wrapper fc eachWrapper">
@@ -80,7 +67,11 @@ export default function Signup() {
         if(error.errorMessage !== "" || !error.errorMessage){
             setError({errorInfo: "", errorMessage:""});
         }
-        // implementing 
+        if(!isTermAccepted){
+            setError({errorMessage:'Please read terms of service and accept it.'})
+            return;
+        }
+        // implementing request
         
     } 
 
@@ -98,14 +89,14 @@ export default function Signup() {
         setUserSignUpInfo({...userSignUpInfo, password});
     }
     // page unmounts
-    useEffect(() => {
-        return () => {
-            setUserSignUpInfo({fName: "", lName: "", email: "", password: ""});
-            setError({errorMessage: "", errorInfo: ""});
-             setIsTermAccepted(false);
-             setIsTermsViewable(false);
-        }
-    },[])
+    // useEffect(() => {
+    //     return () => {
+    //         setUserSignUpInfo({fName: "", lName: "", email: "", password: ""});
+    //         setError({errorMessage: "", errorInfo: ""});
+    //          setIsTermAccepted(false);
+    //          setIsTermsViewable(false);
+    //     }
+    // },[])
   return (
     <section className="signup-container">
         <form ref={formRef} className="form" onSubmit={(e) => {handleSignUpFormSubmit(e)}}>
@@ -123,7 +114,7 @@ export default function Signup() {
                 </div>
             </div>
             {isTermAccepted && (<button className="auth-btn fc" onClick={() => formRef.current.submit()}>Sign up</button>)}
-            {!isTermAccepted && (<button disabled className="auth-btn fc" onClick={() => formRef.current.submit()}>Sign up</button>)}
+            {!isTermAccepted && (<button disabled className="auth-btn fc disabledbtn" onClick={() => formRef.current.submit()}>Sign up</button>)}
             <TermsOfService isChecked={isTermAccepted} changeTermViewable={changeTermViewable} reverseValueOfIsTermAccepted={reverseValueOfIsTermAccepted} />
             {error.errorMessage && <Error errorInfo={error.errorInfo} errorMessage={error.errorMessage} />}
         </form>
