@@ -23,16 +23,16 @@ export const AuthHeader = ({header, info, infoNav }) => {
 }
 function checkIsDataFilled(data){
     if(data.fName === "" || data.fName.trim() === ""){
-        throw new Error("Enter Your First Name Please!");
+        throw new TypeError("Enter Your First Name Please!");
     }
     if(data.lName === "" || data.lName.trim() === ""){
-        throw new Error("Enter Your Last Name Please!");
+        throw new TypeError("Enter Your Last Name Please!");
     }
     if(data.email === "" || data.email.trim() === "" || !data.email.trim().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
-        throw new Error("email");
+        throw new TypeError("email");
     }
     if(data.lName === "" || data.lName.trim() === "" || !data.password.trim().match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)){
-        throw new Error("password");
+        throw new TypeError("password");
     }
 }
 export default function Signup() {
@@ -48,21 +48,23 @@ export default function Signup() {
         setIsTermsViewable(!isTermsViewable);
     }
     const handleSignUpFormSubmit = (e) => {
+        console.log(error.errorMessage);
         e.preventDefault();
-        try{
-            checkIsDataFilled(userSignUpInfo);
-        }catch(err){
-            switch(err.message){
-                case 'email':
-                    setError({errorMessage:"Please enter you email!", errorInfo: "e.g : todoapp@gmail.com"})
-                    return;
-                case 'password':
-                    setError({errorMessage: "Please enter your password", errorInfo:"make sure to use charachters like '!@#$%' and use numbers too."})    
-                    return
-                default:
-                    setError(err.message);
-                    return;
-            }
+        if(userSignUpInfo.fName === "" || userSignUpInfo.fName.trim() === ""){
+            setError({errorMessage: "Enter Your First Name Please!", errorInfo: ""});
+            return;
+        }
+        if(userSignUpInfo.lName === "" || userSignUpInfo.lName.trim() === ""){
+            setError({errorMessage: "Enter Your Last Name Please!", errorInfo: ""});
+            return;
+        }
+        if(userSignUpInfo.email === "" || userSignUpInfo.email.trim() === "" || !userSignUpInfo.email.trim().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+            setError({errorMessage:"Please enter you email!", errorInfo: "e.g : todoapp@gmail.com"})
+            return;
+        }
+        if(userSignUpInfo.lName === "" || userSignUpInfo.lName.trim() === "" || !userSignUpInfo.password.trim().match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)){
+            setError({errorMessage: "Please enter your password", errorInfo:"make sure to use charachters like '!@#$%' and use numbers too."})    
+            return
         }
         if(error.errorMessage !== "" || !error.errorMessage){
             setError({errorInfo: "", errorMessage:""});
