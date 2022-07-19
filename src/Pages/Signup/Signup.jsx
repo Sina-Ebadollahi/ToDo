@@ -99,7 +99,7 @@ export default function Signup() {
     // },[])
   return (
     <section className="signup-container">
-        <form ref={formRef} className="form" onSubmit={(e) => {handleSignUpFormSubmit(e)}}>
+        <form ref={formRef} className="form" onSubmit={(e) => handleSignUpFormSubmit(e)}>
             <AuthHeader header={"Create account"} info={"Already have an account ? "} infoNav={"Login"} />
             <div className="user-info-wrapper fc">
                 <div className="first-last-container fc eachWrapper">
@@ -113,10 +113,10 @@ export default function Signup() {
                     <AuthField changeValue={changePasswordValue} type={"password"} w={90}>Password</AuthField>
                 </div>
             </div>
-            {isTermAccepted && (<button className="auth-btn fc" onClick={() => formRef.current.submit()}>Sign up</button>)}
-            {!isTermAccepted && (<button disabled className="auth-btn fc disabledbtn" onClick={() => formRef.current.submit()}>Sign up</button>)}
+            {isTermAccepted && (<button type='submit' className="auth-btn fc" >Sign up</button>)}
+            {!isTermAccepted && (<button type='submit' disabled className="auth-btn fc disabledbtn" >Sign up</button>)}
             <TermsOfService isChecked={isTermAccepted} changeTermViewable={changeTermViewable} reverseValueOfIsTermAccepted={reverseValueOfIsTermAccepted} />
-            {error.errorMessage && <Error errorInfo={error.errorInfo} errorMessage={error.errorMessage} />}
+            {error.errorMessage && error.errorMessage !== "" && <Error errorInfo={error.errorInfo} errorMessage={error.errorMessage} />}
         </form>
         {isTermsViewable && (
             <InfoCard changeShowState={changeTermViewable}>
