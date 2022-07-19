@@ -14,7 +14,7 @@ export default function AppData() {
       password: "",
     },
   };
-  const rootReducer = useReducer((state = defaultState, action) => {
+  const [state, dispatch] = useReducer((state = defaultState, action) => {
     switch (action.type) {
       case "LOG_IN":
         return {

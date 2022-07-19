@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-export default function useFetch() {
+export default function useFetch(rootReducerDispatch) {
+  // const [requestOptions, setRequestOptions] = useState({
+  //   endPoint: "",
+  //   method: "",
+  //   headers: {},
+  // });
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
@@ -8,21 +13,19 @@ export default function useFetch() {
     setIsPending(true);
     if (endPoint && endPoint != "") {
       try {
-        const fetchAction = await fetch(endPoint, {
-          method,
-          headers: header,
-          body,
+        const axiosInstance = await axios({
+          url: requestOptions.endPoint,
+          method: requestOptions.method,
+          headers: requestOptions.headers,
         });
-        if (fetchAction.status === 200) {
-          const data = await fetchAction.json();
-          if (data) {
-            setData(data);
-          } else {
-            setIsPending(false);
-            throw new Error("Data is undefined!");
+        if (axiosInstance.status == 200) {
+          const d = await axiosInstance.data;
+          updateReducerData();
+          if (axiosInstance.data) {
+            setData(axiosInstance.data);
+          } else if (axiosInstance.status >= 500) {
+            throw new Error("Server side error!");
           }
-        } else if (fetchAction.status >= 500) {
-          throw new Error("Server Side Error!");
         }
         setIsPending(false);
         setError(null);
@@ -32,7 +35,7 @@ export default function useFetch() {
       }
     }
   };
-
+  const updateReducerData = () => {};
   return {
     data,
     error,
