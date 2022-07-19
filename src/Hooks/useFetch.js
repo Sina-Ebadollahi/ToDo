@@ -7,20 +7,19 @@ export default function useFetch() {
   //   headers: {},
   // });
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [requestError, setRequestError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const fetchDataFunction = async (endPoint, method, header, body) => {
     setIsPending(true);
     if (endPoint && endPoint != "") {
       try {
         const axiosInstance = await axios({
-          url: requestOptions.endPoint,
-          method: requestOptions.method,
-          headers: requestOptions.headers,
+          url: endPoint,
+          method: method,
+          headers: header,
         });
-        if (axiosInstance.status == 200) {
+        if (axiosInstance.status === 200) {
           const d = await axiosInstance.data;
-          updateReducerData();
           if (axiosInstance.data) {
             setData(axiosInstance.data);
           } else if (axiosInstance.status >= 500) {
@@ -38,7 +37,7 @@ export default function useFetch() {
 
   return {
     data,
-    error,
+    requestError,
     isPending,
     fetchDataFunction,
   };

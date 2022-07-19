@@ -4,6 +4,7 @@ import AuthField from '../../components/AuthField/AuthField'
 import Error from '../../components/Error/Error'
 import InfoCard from '../../components/InfoCard/InfoCard'
 import { RoundedRadioInput } from '../../components/Input/InputCard'
+import useFetch from '../../Hooks/useFetch'
 import './Signup.css'
 export const TermsOfService = ({reverseValueOfIsTermAccepted, changeTermViewable, isChecked}) => {
     return(
@@ -36,6 +37,7 @@ function checkIsDataFilled(data){
     }
 }
 export default function Signup() {
+    const { fetchDataFunction, data, requestError , isPending } = useFetch();
     const formRef = useRef(null);
     const [error, setError] = useState({errorMessage: "", errorInfo: ""});
     const [isTermAccepted, setIsTermAccepted] = useState(false);
