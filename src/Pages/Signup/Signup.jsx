@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import AuthField from '../../components/AuthField/AuthField'
+import InfoCard from '../../components/InfoCard/InfoCard'
 import { RoundedRadioInput } from '../../components/Input/InputCard'
 import './Signup.css'
 export const GetInfoAuthPage = ({}) => {
@@ -31,6 +32,14 @@ const TermsOfServiceInfo = ({ changeTermViewable }) => {
         </div>
     )
 }
+export const AuthHeader = ({header, info, infoNav }) => {
+    return(
+        <div className="auth-header-wrapper fc eachWrapper">
+                <h1 className="auth-header">{header}</h1>
+                <h4 className="login-header">{info}<Link to={`/${infoNav}`}> {infoNav}</Link></h4>
+            </div>
+    )
+}
 export default function Signup() {
     const formRef = useRef(null);
     const [isTermAccepted, setIsTermAccepted] = useState(false);
@@ -39,7 +48,7 @@ export default function Signup() {
         setIsTermAccepted(!isTermAccepted);
     }
     const changeTermViewable = () => {
-        setIsTermsViewable(!isTermAccepted);
+        setIsTermsViewable(!isTermsViewable);
     }
     const handleSignUpFormSubmit= (e) => {
         e.preventDefault();
@@ -47,10 +56,7 @@ export default function Signup() {
   return (
     <section className="signup-container">
         <form ref={formRef} className="form" onSubmit={(e) => {handleSignUpFormSubmit(e)}}>
-            <div className="auth-header-wrapper fc eachWrapper">
-                <h1 className="auth-header">Create account</h1>
-                <h4 className="login-header">Already have an account ? <Link to="/Login"> Sign in</Link></h4>
-            </div>
+            <AuthHeader header={"Create account"} info={"Already have an account ? "} infoNav={"Login"} />
             <div className="user-info-wrapper fc">
                 <div className="first-last-container fc eachWrapper">
                     <AuthField w={40}>First name</AuthField>
@@ -66,9 +72,13 @@ export default function Signup() {
             <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Sign up</button>
             <TermsOfService isChecked={isTermAccepted} changeTermViewable={changeTermViewable} reverseValueOfIsTermAccepted={reverseValueOfIsTermAccepted} />
         </form>
-        {/* {isTermsViewable && (
-            <TermsOfServiceInfo changeTermViewable={changeTermViewable} />
-        )} */}
+        {isTermsViewable && (
+            <InfoCard changeShowState={changeTermViewable}>
+                <p className="terms-paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, nisi tempora ratione quae quis quibusdam! Consequatur, repellendus, cupiditate nemo quo velit optio repudiandae nisi nobis esse at placeat, animi necessitatibus harum nihil error maiores laborum quam. Ab earum minima aspernatur.
+                </p>
+            </InfoCard>
+        )}
 
     </section>
   )

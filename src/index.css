@@ -7,3 +7,9 @@
   justify-content: center;
   align-items: center;
 }
+a {
+  text-decoration: none;
+}
+.page-out-of-focus {
+  opacity: 0.5;
+}

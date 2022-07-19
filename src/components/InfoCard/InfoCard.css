@@ -1,0 +1,51 @@
+.info-card-container {
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 50vw;
+  min-height: 50vh;
+  flex-direction: column;
+  border-radius: 30px;
+  z-index: 4;
+  justify-content: space-evenly;
+}
+.close-icon-wrapper {
+  width: 100%;
+  height: 15%;
+  justify-content: flex-end;
+}
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 70px;
+  height: 70px;
+  font-size: 0;
+}
+.closeButton:before,
+.closeButton:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 20px;
+  background-color: #f0f0f0;
+  transform: rotate(45deg) translate(-50%, -50%);
+  transform-origin: top left;
+  content: "";
+}
+.closeButton:after {
+  transform: rotate(-45deg) translate(-50%, -50%);
+}
+.infocard-children {
+  flex-direction: column;
+  height: 80%;
+  width: 90%;
+  margin: 0 auto;
+}
+.infocard-children > * {
+  margin: 1rem;
+}
