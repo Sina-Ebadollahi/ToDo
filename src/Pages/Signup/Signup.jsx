@@ -36,7 +36,7 @@ export const AuthHeader = ({header, info, infoNav }) => {
     return(
         <div className="auth-header-wrapper fc eachWrapper">
                 <h1 className="auth-header">{header}</h1>
-                <h4 className="login-header">{info}<Link to={`/${infoNav}`}> {infoNav}</Link></h4>
+                {info && infoNav && <h4 className="login-header">{info}<Link to={`/${infoNav}`}> {infoNav}</Link></h4>}
             </div>
     )
 }
@@ -44,6 +44,7 @@ export default function Signup() {
     const formRef = useRef(null);
     const [isTermAccepted, setIsTermAccepted] = useState(false);
     const [isTermsViewable, setIsTermsViewable] = useState(false);
+    const [userSignUpInfo, setUserSignUpInfo] = useState({fName: "", lName: "", email: "", password: ""});
     const reverseValueOfIsTermAccepted = () => {
         setIsTermAccepted(!isTermAccepted);
     }
@@ -53,20 +54,34 @@ export default function Signup() {
     const handleSignUpFormSubmit= (e) => {
         e.preventDefault();
     } 
+
+    // change values
+    const changeEmailValue = (email) => {
+        setUserSignUpInfo({...userSignUpInfo, email});
+    }
+    const changeFirstNameValue = (firstName) => {
+        setUserSignUpInfo({...userSignUpInfo, fName: firstName});
+    }
+    const changeLastNameValue = (lastName) => {
+        setUserSignUpInfo({...userSignUpInfo, lName: lastName});
+    }
+    const changePasswordValue = (password) => {
+        setUserSignUpInfo({...userSignUpInfo, password});
+    }
   return (
     <section className="signup-container">
         <form ref={formRef} className="form" onSubmit={(e) => {handleSignUpFormSubmit(e)}}>
             <AuthHeader header={"Create account"} info={"Already have an account ? "} infoNav={"Login"} />
             <div className="user-info-wrapper fc">
                 <div className="first-last-container fc eachWrapper">
-                    <AuthField w={40}>First name</AuthField>
-                    <AuthField w={40}>Last name</AuthField>
+                    <AuthField changeValue={changeFirstNameValue} w={40}>First name</AuthField>
+                    <AuthField changeValue={changeLastNameValue} w={40}>Last name</AuthField>
                 </div>
                 <div className="user-email-wrapper fc eachWrapper">
-                    <AuthField type={"email"} w={90}>E-mail</AuthField>
+                    <AuthField changeValue={changeEmailValue} type={"email"} w={90}>E-mail</AuthField>
                 </div>
                 <div className="user-password-wrapper fc eachWrapper">
-                    <AuthField type={"password"} w={90}>Password</AuthField>
+                    <AuthField changeValue={changePasswordValue} type={"password"} w={90}>Password</AuthField>
                 </div>
             </div>
             <button className="auth-btn fc" onClick={() => formRef.current.submit()}>Sign up</button>
