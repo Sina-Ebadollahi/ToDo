@@ -3,7 +3,7 @@ import AuthField from '../../components/AuthField/AuthField'
 import { AuthHeader } from '../Signup/Signup'
 import './ForgotPassword.css'
 export default function ForgotPassword() {
-    const formRef = useRef(null);
+    const [error, setError] = useState({errorMessage: "", errorInfo: ""});
     const [isEmailResetConfirmedByServer, setIsEmailResetConfirmedByServer] = useState(false);
     const [emailValue, setEmailValue] = useState("");
 
@@ -13,7 +13,14 @@ export default function ForgotPassword() {
     }
     const handleForgotPasswordFormSubmit = (e) => {
         e.preventDefault();
-        setIsEmailResetConfirmedByServer(true);
+        // setIsEmailResetConfirmedByServer(true);
+        if(emailValue === "" || emailValue.trim() === "" || !emailValue.trim().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+            setError({errorMessage:"Please enter you email!", errorInfo: "e.g : todoapp@gmail.com"})
+            return;
+        }
+        if(error.errorMessage !== "" || !error.errorMessage){
+            setError({errorInfo: "", errorMessage:""});
+        }
     }
   return (
     <section className="signup-container">

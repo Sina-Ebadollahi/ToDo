@@ -4,21 +4,30 @@ import AuthField from '../../components/AuthField/AuthField'
 import InfoCard from '../../components/InfoCard/InfoCard';
 import { AuthHeader } from '../Signup/Signup'
 import './Login.css'
+import Error from "../../components/Error/Error";
 export default function Login() {
   const formRef = useRef(null);
+  const [error, setError] = useState({errorMessage: "", errorInfo: ""});
   const [isPasswordResetComponentLoaded, setIsPasswordResetComponentLoaded] = useState(false);
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+      if(emailValue === "" || emailValue.trim() === "" || !emailValue.trim().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
+          setError({errorMessage:"Please enter you email!", errorInfo: "e.g : todoapp@gmail.com"})
+          return;
+      }
+      if(passwordValue === "" || passwordValue.trim() === "" || !passwordValue.trim().match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)){
+          setError({errorMessage: "Please enter your password", errorInfo:"make sure to use charachters like '!@#$%' and use numbers too."})
+          return;
+      }
+      if(error.errorMessage !== "" || !error.errorMessage){
+          setError({errorInfo: "", errorMessage:""});
+      }
+      // api request
   }
   
-  const changePasswordComponentVisibility = () => {
-    setIsPasswordResetComponentLoaded(!isPasswordResetComponentLoaded);
-  }
-  const handleResetPasswordClick = (e) => {
 
-  }
   const changeEmailValue = (email) => {
     setEmailValue(email);
   }
@@ -41,6 +50,7 @@ export default function Login() {
         <div className="forgot-password-wrapper fc">
           <Link to='/ForgotPassword'><h4 >Forgot password ?</h4></Link>
         </div>
+          {error.errorMessage && error.errorMessage !== "" && <Error errorInfo={error.errorInfo} errorMessage={error.errorMessage} />}
       </form>
       {/* {isPasswordResetComponentLoaded && (
         <InfoCard changeShowState={changePasswordComponentVisibility}>
