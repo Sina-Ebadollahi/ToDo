@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-export default function useFetch(rootReducerDispatch) {
+export default function useFetch() {
   // const [requestOptions, setRequestOptions] = useState({
   //   endPoint: "",
   //   method: "",
@@ -35,7 +35,7 @@ export default function useFetch(rootReducerDispatch) {
       }
     }
   };
-  const updateReducerData = () => {};
+
   return {
     data,
     error,
