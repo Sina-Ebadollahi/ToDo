@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { API_Details } from '../../APIUtility'
 import AuthField from '../../components/AuthField/AuthField'
 import Error from '../../components/Error/Error'
@@ -44,6 +44,7 @@ export default function Signup() {
     const [isTermAccepted, setIsTermAccepted] = useState(false);
     const [isTermsViewable, setIsTermsViewable] = useState(false);
     const [userSignUpInfo, setUserSignUpInfo] = useState({fName: "", lName: "", email: "", password: ""});
+    const nav = useNavigate()
     const reverseValueOfIsTermAccepted = () => {
         setIsTermAccepted(!isTermAccepted);
     }
@@ -53,6 +54,7 @@ export default function Signup() {
     const handleSignUpFormSubmit = (e) => {
         console.log(error.errorMessage);
         e.preventDefault();
+        console.log(userSignUpInfo.fName);
         if(userSignUpInfo.fName === "" || userSignUpInfo.fName.trim() === ""){
             setError({errorMessage: "Enter Your First Name Please!", errorInfo: ""});
             return;
@@ -66,7 +68,7 @@ export default function Signup() {
             return;
         }
         if(userSignUpInfo.lName === "" || userSignUpInfo.lName.trim() === "" || !userSignUpInfo.password.trim().match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)){
-            setError({errorMessage: "Please enter your password", errorInfo:"make sure to use charachters like '!@#$%' and use numbers too."})    
+            setError({errorMessage: "Please enter your password", errorInfo:"make sure to use charachters like '!@#$%' and use numbers too and the length must be more than 6 charachters."})    
             return
         }
         if(error.errorMessage !== "" || !error.errorMessage){
@@ -77,7 +79,23 @@ export default function Signup() {
             return;
         }
         // implementing request
-        fetchDataFunction(`${API_Details.endpoint}`,'POST',{})
+        fetchDataFunction(`${API_Details.endpoint}${API_Details.resourse[0]}`,'POST',null,{
+            firstName: userSignUpInfo.fName,
+            lastName: userSignUpInfo.lName,
+            email: userSignUpInfo.email,
+            password: userSignUpInfo.password,
+            "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/722.jpg",
+            "isEmailConfirmed": false,
+            "createdAt": new Date().toJSON(),
+               
+        })
+        .then(() => {
+            console.log(data.reqStatus, data.reqData);
+            if(data.reqStatus === 201 && data.reqData && data.reqData.status === "created"){
+                nav('/')
+            }
+        })
+        
     } 
 
     // change values
@@ -85,6 +103,7 @@ export default function Signup() {
         setUserSignUpInfo({...userSignUpInfo, email});
     }
     const changeFirstNameValue = (firstName) => {
+        console.log("in");
         setUserSignUpInfo({...userSignUpInfo, fName: firstName});
     }
     const changeLastNameValue = (lastName) => {

@@ -16,14 +16,14 @@ export default function useFetch() {
       try {
         const axiosInstance = await axios({
           url: endPoint,
-          method: method,
+          method,
           headers: header,
         });
         setData({ ...data, reqStatus: axiosInstance.status });
         if (axiosInstance.status === 200) {
-          const d = await axiosInstance.data;
-          if (axiosInstance.data) {
-            setData({ ...data, reqData: axiosInstance.data });
+          const d = axiosInstance.data;
+          if (d) {
+            setData({ ...data, reqData: d });
           } else if (axiosInstance.status >= 500) {
             throw new Error("Server side error!");
           }
