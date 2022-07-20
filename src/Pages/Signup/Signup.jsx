@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { API_Details } from '../../APIUtility'
 import AuthField from '../../components/AuthField/AuthField'
 import Error from '../../components/Error/Error'
 import InfoCard from '../../components/InfoCard/InfoCard'
@@ -76,7 +77,7 @@ export default function Signup() {
             return;
         }
         // implementing request
-        
+        fetchDataFunction(`${API_Details.endpoint}`,'POST',{})
     } 
 
     // change values

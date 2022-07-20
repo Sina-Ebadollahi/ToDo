@@ -6,10 +6,11 @@ export default function useFetch() {
   //   method: "",
   //   headers: {},
   // });
-  const [data, setData] = useState(null);
+  const [data, setData] = useState({ reqStatus: 0, reqData: null });
   const [requestError, setRequestError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const fetchDataFunction = async (endPoint, method, header, body) => {
+    cleanUpFunction();
     setIsPending(true);
     if (endPoint && endPoint != "") {
       try {
@@ -18,10 +19,11 @@ export default function useFetch() {
           method: method,
           headers: header,
         });
+        setData({ ...data, reqStatus: axiosInstance.status });
         if (axiosInstance.status === 200) {
           const d = await axiosInstance.data;
           if (axiosInstance.data) {
-            setData(axiosInstance.data);
+            setData({ ...data, reqData: axiosInstance.data });
           } else if (axiosInstance.status >= 500) {
             throw new Error("Server side error!");
           }
@@ -34,7 +36,11 @@ export default function useFetch() {
       }
     }
   };
-
+  function cleanUpFunction() {
+    setRequestError(null);
+    setIsPending(false);
+    setData({ reqData: null, reqStatus: 0 });
+  }
   return {
     data,
     requestError,
