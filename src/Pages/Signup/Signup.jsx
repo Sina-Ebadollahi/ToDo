@@ -23,20 +23,6 @@ export const AuthHeader = ({header, info, infoNav }) => {
             </div>
     )
 }
-function checkIsDataFilled(data){
-    if(data.fName === "" || data.fName.trim() === ""){
-        throw new TypeError("Enter Your First Name Please!");
-    }
-    if(data.lName === "" || data.lName.trim() === ""){
-        throw new TypeError("Enter Your Last Name Please!");
-    }
-    if(data.email === "" || data.email.trim() === "" || !data.email.trim().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)){
-        throw new TypeError("email");
-    }
-    if(data.lName === "" || data.lName.trim() === "" || !data.password.trim().match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)){
-        throw new TypeError("password");
-    }
-}
 export default function Signup() {
     const { fetchDataFunction, data, requestError , isPending } = useFetch();
     const formRef = useRef(null);

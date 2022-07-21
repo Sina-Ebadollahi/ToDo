@@ -22,6 +22,7 @@ export default function useFetch() {
         setData({ ...data, reqStatus: axiosInstance.status });
         if (axiosInstance.status === 200) {
           const d = axiosInstance.data;
+          console.log("d is", d);
           if (d) {
             setData({ ...data, reqData: d });
           } else if (axiosInstance.status >= 500) {
