@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 export default function useFetch() {
   // const [requestOptions, setRequestOptions] = useState({
@@ -9,6 +9,7 @@ export default function useFetch() {
   const [data, setData] = useState({ reqStatus: 0, reqData: null });
   const [requestError, setRequestError] = useState(null);
   const [isPending, setIsPending] = useState(false);
+  useEffect(() => {}, []);
   const fetchDataFunction = async (endPoint, method, header, body) => {
     cleanUpFunction();
     setIsPending(true);
@@ -20,9 +21,8 @@ export default function useFetch() {
           headers: header,
         });
         setData({ ...data, reqStatus: axiosInstance.status });
-        if (axiosInstance.status === 200) {
+        if (axiosInstance.status >= 200 && axiosInstance.status < 202) {
           const d = axiosInstance.data;
-          console.log("d is", d);
           if (d) {
             setData({ ...data, reqData: d });
           } else if (axiosInstance.status >= 500) {

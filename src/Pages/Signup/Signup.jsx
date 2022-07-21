@@ -37,9 +37,8 @@ export default function Signup() {
     const changeTermViewable = () => {
         setIsTermsViewable(!isTermsViewable);
     }
-    const handleSignUpFormSubmit = (e) => {
+    const handleSignUpFormSubmit = () => {
         console.log(error.errorMessage);
-        e.preventDefault();
         console.log(userSignUpInfo.fName);
         if(userSignUpInfo.fName === "" || userSignUpInfo.fName.trim() === ""){
             setError({errorMessage: "Enter Your First Name Please!", errorInfo: ""});
@@ -77,7 +76,10 @@ export default function Signup() {
         })
         .then(() => {
             console.log(data.reqStatus, data.reqData);
-            if(data.reqStatus === 201 && data.reqData && data.reqData.status === "created"){
+            if(requestError){
+                setError({errorMessage: requestError, errorInfo: ""});
+            }
+            if(data.reqStatus === 201 && data.reqData && data.reqData.reqStatus === "created"){
                 nav('/')
             }
         })
@@ -109,7 +111,7 @@ export default function Signup() {
     },[])
   return (
     <section className="signup-container">
-        <form ref={formRef} className="form" onSubmit={(e) => handleSignUpFormSubmit(e)}>
+        <form ref={formRef} className="form" >
             <AuthHeader header={"Create account"} info={"Already have an account ? "} infoNav={"Login"} />
             <div className="user-info-wrapper fc">
                 <div className="first-last-container fc eachWrapper">
@@ -123,8 +125,8 @@ export default function Signup() {
                     <AuthField changeValue={changePasswordValue} type={"password"} w={90}>Password</AuthField>
                 </div>
             </div>
-            {isTermAccepted && (<button type='submit' className="auth-btn fc" >Sign up</button>)}
-            {!isTermAccepted && (<button type='submit' disabled className="auth-btn fc disabledbtn" >Sign up</button>)}
+            {isTermAccepted && (<div onClick={() => handleSignUpFormSubmit()}  className="auth-btn fc" >Sign up</div>)}
+            {!isTermAccepted && (<div onClick={() => handleSignUpFormSubmit()} disabled className="auth-btn fc disabledbtn" >Sign up</div>)}
             <TermsOfService isChecked={isTermAccepted} changeTermViewable={changeTermViewable} reverseValueOfIsTermAccepted={reverseValueOfIsTermAccepted} />
             {error.errorMessage && error.errorMessage !== "" && <Error errorInfo={error.errorInfo} errorMessage={error.errorMessage} />}
         </form>
