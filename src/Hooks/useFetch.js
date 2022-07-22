@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-export default function useFetch(requestData) {
+export default function useFetch() {
   const [data, setData] = useState({ reqStatus: 0, reqData: null });
   const [requestError, setRequestError] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  useEffect(() => {
-    (function() {
-      fetchDataFunction(
-        requestData.endPoint,
-        requestData.method,
-        requestData.header,
-        requestData.body
-      );
-    })();
-    return () => {
-      cleanUpFunction();
-    };
-  }, [requestData]);
+
   const fetchDataFunction = async (endPoint, method, header, body) => {
     setIsPending(true);
     if (endPoint && endPoint != "") {
@@ -52,5 +40,6 @@ export default function useFetch(requestData) {
     data,
     requestError,
     isPending,
+    fetchDataFunction,
   };
 }
