@@ -64,6 +64,7 @@ export default function Signup() {
             return;
         }
         // implementing request
+        handleSignUpUpdate(userSignUpInfo);
         fetchDataFunction(`${API_Details.endpoint}${API_Details.resourse[0]}`,'POST',null,{
             firstName: userSignUpInfo.fName,
             lastName: userSignUpInfo.lName,

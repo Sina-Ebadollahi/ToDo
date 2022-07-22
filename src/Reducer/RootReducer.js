@@ -1,6 +1,5 @@
 import { useReducer } from "react";
 
-// export default function AppData() {
 let defaultState = {
   authInfo: {
     isLoggedIn: false,
@@ -31,8 +30,3 @@ const [state, dispatch] = useReducer((state = defaultState, action) => {
   }
 });
 export { state, dispatch };
-//   return {
-//     state,
-//     dispatch,
-//   };
-// }
