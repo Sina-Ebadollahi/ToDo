@@ -1,5 +1,5 @@
 import React from "react";
-import { state as reducerState, dispatch } from "../Reducer/RootReducer";
+import { state, dispatch } from "../Reducer/RootReducer";
 export default function useData() {
   const handleSignUpUpdate = (updatedData) => {
     dispatch({ type: "SIGN_UP", payload: updatedData });
