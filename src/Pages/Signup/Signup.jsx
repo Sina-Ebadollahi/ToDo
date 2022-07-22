@@ -5,6 +5,7 @@ import AuthField from '../../components/AuthField/AuthField'
 import Error from '../../components/Error/Error'
 import InfoCard from '../../components/InfoCard/InfoCard'
 import { RoundedRadioInput } from '../../components/Input/InputCard'
+import useData from '../../Hooks/useData'
 import useFetch from '../../Hooks/useFetch'
 import './Signup.css'
 export const TermsOfService = ({reverseValueOfIsTermAccepted, changeTermViewable, isChecked}) => {
@@ -25,6 +26,7 @@ export const AuthHeader = ({header, info, infoNav }) => {
 }
 export default function Signup() {
     const { fetchDataFunction, data, requestError , isPending } = useFetch();
+    const { handleSignUpUpdate } = useData()
     const formRef = useRef(null);
     const [error, setError] = useState({errorMessage: "", errorInfo: ""});
     const [isTermAccepted, setIsTermAccepted] = useState(false);
@@ -38,8 +40,6 @@ export default function Signup() {
         setIsTermsViewable(!isTermsViewable);
     }
     const handleSignUpFormSubmit = () => {
-        console.log(error.errorMessage);
-        console.log(userSignUpInfo.fName);
         if(userSignUpInfo.fName === "" || userSignUpInfo.fName.trim() === ""){
             setError({errorMessage: "Enter Your First Name Please!", errorInfo: ""});
             return;
