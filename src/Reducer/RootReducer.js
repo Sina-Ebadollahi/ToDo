@@ -13,7 +13,7 @@ let defaultState = {
     password: "",
   },
 };
-const [state, dispatch] = useReducer((state, action) => {
+const [state, dispatch] = useReducer((state = defaultState, action) => {
   switch (action.type) {
     case "LOG_IN":
       return {
