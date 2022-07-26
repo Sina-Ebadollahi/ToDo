@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 import AuthField from '../../components/AuthField/AuthField'
 import InfoCard from '../../components/InfoCard/InfoCard';
 import { AuthHeader } from '../Signup/Signup'
+import { API_Details } from '../../APIUtility'
+
 import './Login.css'
 import Error from "../../components/Error/Error";
+import useFetch from '../../Hooks/useFetch';
 export default function Login() {
+  const { data, fetchDataFunction, isPending, requestError} = useFetch();
   const formRef = useRef(null);
   const [error, setError] = useState({errorMessage: "", errorInfo: ""});
   const [isPasswordResetComponentLoaded, setIsPasswordResetComponentLoaded] = useState(false);
@@ -25,6 +29,25 @@ export default function Login() {
           setError({errorInfo: "", errorMessage:""});
       }
       // api request
+      fetchDataFunction(`${API_Details.endpoint}${API_Details.resourse[0]}`,'GET',null,{
+        email : emailValue,
+        password: passwordValue,
+        
+           
+    })
+    .then(() => {
+        console.log(data.reqStatus, data.reqData);
+        if(requestError){
+            setError({errorMessage: requestError, errorInfo: ""});
+        }
+        if(data.reqStatus === 200){
+          //implementing reducer update
+            nav('/')
+            
+        }else if(data.reqStatus === 403){
+          setError({ errorInfo: "Password or username does'nt match"});
+        }
+    })
   }
   
 

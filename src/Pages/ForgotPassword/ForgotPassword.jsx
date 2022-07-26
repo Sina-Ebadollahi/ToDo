@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import AuthField from '../../components/AuthField/AuthField'
 import { AuthHeader } from '../Signup/Signup'
+import { API_Details } from '../../APIUtility'
 import './ForgotPassword.css'
 export default function ForgotPassword() {
     const [error, setError] = useState({errorMessage: "", errorInfo: ""});
@@ -21,6 +22,27 @@ export default function ForgotPassword() {
         if(error.errorMessage !== "" || !error.errorMessage){
             setError({errorInfo: "", errorMessage:""});
         }
+        // api
+        fetchDataFunction(`${API_Details.endpoint}${API_Details.resourse[1]}`,'GET',null,{
+            email : emailValue,
+            
+               
+        })
+        .then(() => {
+            console.log(data.reqStatus, data.reqData);
+            if(requestError){
+                setError({errorMessage: requestError, errorInfo: ""});
+            }
+            if(data.reqStatus === 200){
+              //implementing reducer update
+                nav('/')
+                setIsEmailResetConfirmedByServer(true);
+                
+            }else if(data.reqStatus >= 300){
+              setError({ errorInfo: "email doesn't found!"});
+            }
+
+        })
     }
   return (
     <section className="signup-container">
