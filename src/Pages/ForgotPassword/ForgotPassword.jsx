@@ -3,7 +3,11 @@ import AuthField from '../../components/AuthField/AuthField'
 import { AuthHeader } from '../Signup/Signup'
 import { API_Details } from '../../APIUtility'
 import './ForgotPassword.css'
+import useFetch from '../../Hooks/useFetch'
+import { useNavigate } from 'react-router-dom'
 export default function ForgotPassword() {
+    const nav = useNavigate()
+    const { data, fetchDataFunction, isPending, requestError} = useFetch()
     const [error, setError] = useState({errorMessage: "", errorInfo: ""});
     const [isEmailResetConfirmedByServer, setIsEmailResetConfirmedByServer] = useState(false);
     const [emailValue, setEmailValue] = useState("");

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthField from '../../components/AuthField/AuthField'
 import InfoCard from '../../components/InfoCard/InfoCard';
 import { AuthHeader } from '../Signup/Signup'
@@ -9,6 +9,7 @@ import './Login.css'
 import Error from "../../components/Error/Error";
 import useFetch from '../../Hooks/useFetch';
 export default function Login() {
+  const nav = useNavigate()
   const { data, fetchDataFunction, isPending, requestError} = useFetch();
   const formRef = useRef(null);
   const [error, setError] = useState({errorMessage: "", errorInfo: ""});
