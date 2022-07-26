@@ -26,7 +26,7 @@ export const AuthHeader = ({header, info, infoNav }) => {
 }
 export default function Signup() {
     const { fetchDataFunction, data, requestError , isPending } = useFetch();
-    const { handleSignUpUpdate } = useData()
+    // const { handleSignUpUpdate } = useData()
     const formRef = useRef(null);
     const [error, setError] = useState({errorMessage: "", errorInfo: ""});
     const [isTermAccepted, setIsTermAccepted] = useState(false);
@@ -64,7 +64,7 @@ export default function Signup() {
             return;
         }
         // implementing request
-        handleSignUpUpdate(userSignUpInfo);
+        // handleSignUpUpdate(userSignUpInfo);
         fetchDataFunction(`${API_Details.endpoint}${API_Details.resourse[0]}`,'POST',null,{
             firstName: userSignUpInfo.fName,
             lastName: userSignUpInfo.lName,
