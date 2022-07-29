@@ -1,0 +1,17 @@
+.error-comp {
+  background: transparent;
+  color: red;
+  width: 90%;
+  flex-direction: column;
+}
+.error-comp > div {
+  width: 100%;
+  height: 50%;
+}
+.error-header {
+  font-size: calc(1.5rem + 1vw);
+  text-align: center;
+}
+.error-info {
+  font-size: calc(0.8rem + 1vw);
+}

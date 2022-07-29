@@ -1,41 +1,44 @@
 import React, { useState } from "react";
 import axios from "axios";
 export default function useFetch() {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState({ reqStatus: 0, reqData: null });
+  const [requestError, setRequestError] = useState(null);
   const [isPending, setIsPending] = useState(false);
+
   const fetchDataFunction = async (endPoint, method, header, body) => {
     setIsPending(true);
     if (endPoint && endPoint != "") {
       try {
-        const fetchAction = await fetch(endPoint, {
+        const axiosInstance = await axios({
+          url: endPoint,
           method,
           headers: header,
-          body,
         });
-        if (fetchAction.status === 200) {
-          const data = await fetchAction.json();
-          if (data) {
-            setData(data);
-          } else {
-            setIsPending(false);
-            throw new Error("Data is undefined!");
+        setData({ ...data, reqStatus: axiosInstance.status });
+        if (axiosInstance.status >= 200 && axiosInstance.status < 202) {
+          const d = axiosInstance.data;
+          if (d) {
+            setData({ ...data, reqData: d });
+          } else if (axiosInstance.status >= 500) {
+            throw new Error("Server side error!");
           }
-        } else if (fetchAction.status >= 500) {
-          throw new Error("Server Side Error!");
         }
         setIsPending(false);
-        setError(null);
+        setRequestError(null);
       } catch (err) {
         setIsPending(false);
-        setError(err.message);
+        setRequestError(err.message);
       }
     }
   };
-
+  function cleanUpFunction() {
+    setRequestError(null);
+    setIsPending(false);
+    setData({ reqData: null, reqStatus: 0 });
+  }
   return {
     data,
-    error,
+    requestError,
     isPending,
     fetchDataFunction,
   };
